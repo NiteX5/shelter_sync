@@ -29,6 +29,18 @@ services:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
 
+  client:
+      build:
+        context: ./client
+        dockerfile: Dockerfile
+      container_name: next_client
+      restart: always
+      ports:
+        - "3001:3000" # Acceso desde http://localhost:3001
+      environment:
+        - NEXT_PUBLIC_API_URL=http://localhost:3000
+      depends_on:
+        - app
 
 volumes:
   pgdata:
