@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: user_admin
       POSTGRES_PASSWORD: password123
-      POSTGRES_DB: nest_db
+      POSTGRES_DB: sheltersync
     ports:
       - "5432:5432"
     volumes:
@@ -20,11 +20,11 @@ services:
       dockerfile: Dockerfile
     container_name: nest_app
     ports:
-      - "3000:3000"
+      - "3002:3002"
     depends_on:
       - db
-    environment:
-      DATABASE_URL: postgresql://user_admin:password123@db:5432/nest_db
+    env_file:
+      - ./server/.env
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
