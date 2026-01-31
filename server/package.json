@@ -23,7 +23,8 @@
     "docker:build": "docker-compose up --build",
     "docker:logs": "docker-compose logs -f",
     "db:restart": "docker-compose restart db",
-    "test:docker": "docker-compose exec api npm run test"
+    "test:docker": "docker-compose exec api npm run test",
+    "seed": "tsc && node dist/prisma/seed.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
